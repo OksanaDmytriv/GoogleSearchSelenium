@@ -33,7 +33,7 @@ public class GoogleSearchTest {
     }
 
     @Test
-    public void testSearchText() {
+    public void testSearchTextAndClickOnLink() {
 
         openGoogle();
         searchText("Selenium automates browsers");
@@ -54,6 +54,7 @@ public class GoogleSearchTest {
     }
 
     private void searchText(String searchText) {
+        driver.findElement(By.name("q")).clear();
         driver.findElement(By.name("q")).sendKeys(searchText+Keys.ENTER);
     }
 
