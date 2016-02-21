@@ -38,7 +38,7 @@ public class CustomConditions {
                 }
 
                 public String toString() {
-                    return String.format("\nsize of list: %s\n should be: %s\n while actual size is: %s\n", results, minimumSize, listSize);
+                    return String.format("\nsize of list: %s\n minimum size should be: %s\n while actual size is: %s\n", results, minimumSize, listSize);
 
                 }
             };
