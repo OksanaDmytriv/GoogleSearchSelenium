@@ -65,7 +65,7 @@ public class GoogleSearchTest {
     }
 
     private void followNthLink(int index) {
-        wait.until(minimumSizeOf((By.cssSelector(results)), index));
+        wait.until(minimumSizeOf((By.cssSelector(results)), index+1));
         results().get(index).findElement(By.cssSelector(".r>a")).click();
     }
 
