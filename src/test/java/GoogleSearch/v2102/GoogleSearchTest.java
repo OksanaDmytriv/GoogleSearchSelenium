@@ -4,6 +4,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -39,9 +40,11 @@ public class GoogleSearchTest {
         followNthLink(0);
         assertTitleOpenedURL("Selenium - Web Browser Automation");
     }
+    
     @Test
     public void testSearchCommonFlow() {
-        givenSearchResults("Selenium automates browsers");
+        openGoogle();
+        searchText("Selenium automates browsers");
         assertResultsSize(10);
         assertFirstResult("Selenium - Web Browser Automation");
     }
@@ -51,6 +54,15 @@ public class GoogleSearchTest {
     }
 
     String results = (".srg>.g");
+
+    private void openGoogle() {
+        driver.get("http://google.com/ncr");
+    }
+
+    private void searchText(String searchText) {
+        driver.findElement(By.name("q")).clear();
+        driver.findElement(By.name("q")).sendKeys(searchText+ Keys.ENTER);
+    }
 
     private void givenSearchResults(String request) {
         driver.get("https://www.google.com/?gws_rd=ssl#q=".concat(request));
